@@ -56,7 +56,7 @@ public class Main {
         System.out.print("Password: ");
         String pass = scanner.nextLine();
 
-        // Dummy validation for Part 2 demo
+        // Dummy validation for Part 2 demonstration
         if (!user.equals("kyl_1") || !pass.equals("Ch&sec@ke99!")) {
             System.out.println("Login failed. Exiting.");
             return;

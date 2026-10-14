@@ -15,7 +15,7 @@ public class Testing{
         assertEquals(10, msg.getMessageID().length());
     }
 
-    // Test 2 - Recipient VALID - doit être avec +27
+    // Test 2 - Recipient VALID - must contain +27
     @Test
     public void testCheckRecipientCell_Valid() {
         Message msg = new Message(1, "+27834567890", "Hello");
@@ -23,7 +23,7 @@ public class Testing{
         assertEquals("Cell phone number successfully captured.", result);
     }
 
-    // Test 3 - Recipient INVALID - sans code international
+    // Test 3 - Recipient INVALID - without international code
     @Test
     public void testCheckRecipientCell_Invalid() {
         Message msg = new Message(1, "0834567890", "Hello");
@@ -31,7 +31,7 @@ public class Testing{
         assertTrue(result.contains("incorrectly formatted"));
     }
 
-    // Test 4 - Message trop long > 250 - tu le check dans Main mais on teste aussi ici
+    // Test 4
     @Test
     public void testMessageLength_Valid() {
         String shortText = "Hello world";
@@ -44,21 +44,20 @@ public class Testing{
         assertTrue(longText.length() > 250);
     }
 
-    // Test 5 - Message Hash format - LE PLUS IMPORTANT POUR LE POE
+    // Test 5 - Message Hash format -
     @Test
     public void testCreateMessageHash() {
-        // On force un ID pour pouvoir tester le hash
         // Message 1: "Hi Mike, can you join us"
         Message msg = new Message(1, "+27834567890", "Hi Mike, can you join us");
-        // On remplace l'ID généré par un ID connu pour le test
-        // Si tu veux tester exactement: 00:1:HITUS ou 00:1:HIUS
+
+        // if you want to test
         String hash = msg.getMessageHash();
 
-        // Le hash doit contenir ":" et être en UPPERCASE
+        // the hash must contain ":" and must be an UPPERCASE
         assertNotNull(hash);
         assertTrue(hash.contains(":"));
         assertEquals(hash, hash.toUpperCase());
-        // Il doit commencer par les 2 premiers chiffres de l'ID
+        // must start with the 2 first number of the ID
         String firstTwo = msg.getMessageID().substring(0, 2);
         assertTrue(hash.startsWith(firstTwo));
     }
@@ -75,7 +74,7 @@ public class Testing{
     public void testSentMessage_Option2() {
         Message msg = new Message(1, "+27834567890", "Test");
         String result = msg.sentMessage(2);
-        // !!! VÉRIFIE TON BRIEF - ici c'est ton texte actuel
+        // !!! chech here - actuel text
         assertEquals("Press 0 to delete the message.", result);
     }
 
@@ -86,7 +85,7 @@ public class Testing{
         assertEquals("Message successfully stored.", result);
     }
 
-    // Test 7 - Total sent counter (logique de Main)
+    // Test 7 - Total sent counter (logic Main)
     @Test
     public void testTotalSentLogic() {
         int totalSent = 0;
