@@ -10,7 +10,7 @@ public class Testing{
     @Test
     public void testCheckMessageID() {
         Message msg = new Message(1, "+27834567890", "Hi there");
-        // Ton generateMessageID() doit donner 10 chiffres
+        //  generateMessageID()
         assertTrue(msg.checkMessageID(), "Message ID should be <= 10 chars");
         assertEquals(10, msg.getMessageID().length());
     }

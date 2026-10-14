@@ -64,7 +64,7 @@ public class Main {
 
         System.out.print("How many messages do you wish to send ? ");
         int numMessages = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();  // Consume newline
 
         int totalSent = 0;
 

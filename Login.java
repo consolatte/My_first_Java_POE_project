@@ -47,7 +47,7 @@ void checkPasswordComplexity(String password){
         for (int i = 0 ; i<password.length();i++){
             char ch = password.charAt(i);
             if (Character.isUpperCase(ch)){
-                hasCapital = true ;
+                hasCapital= true ;
             }
             if (Character.isDigit(ch)){
                 hasNumber = true ;
