@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+ import java.util.Scanner;
 public class Login {
     String username;
     String cellphone;
@@ -11,18 +10,24 @@ public class Login {
 
 
     Scanner sc = new Scanner(System.in);
+
+    public Login() {
+    }
+
     void checkUserName(String username){
     while (true) {
         if (username.length() <= 6 && username.contains("_")) {
             System.out.println("username successfully captured.");
             break;
         } else {
-            System.out.println("Username is not correctly formated ; please ensure that your username contains an underscore and is no more than 5 character in length ");
+            System.out.println("Username is not correctly formated ; " +
+                    "please ensure that your username contains an underscore" +
+                    " and is no more than 5 character in length ");
             username = sc.nextLine();
         }
     }
 }
-void checkCellPhoneNumber(String cellphone){
+boolean checkCellPhoneNumber(String cellphone){
     while (true){
         if (cellphone.startsWith("+27") && cellphone.length()<=12){
             System.out.println("Cellphone successfully captured ");
@@ -32,6 +37,7 @@ void checkCellPhoneNumber(String cellphone){
             cellphone =sc.nextLine();
         }
     }
+    return false;
 }
 void checkPasswordComplexity(String password){
     while(true){
@@ -54,13 +60,15 @@ void checkPasswordComplexity(String password){
             System.out.println("Password successfully captured");
             break;
         } else {
-            System.out.println("Password is not correctly formatted , please ensure that your password contains at least eight character , a capital letter , a number , and a special character");
+            System.out.println("Password is not correctly formatted , " +
+                    "please ensure that your password contains at least eight character ," +
+                    " a capital letter , a number , and a special character");
             password = sc.nextLine();
 
         }
     }
 }
-void loginUser(String storedUsername ,String storedPassword ,String username , String password,String firstname ,String lastname){
+String loginUser(String storedUsername , String storedPassword , String username , String password, String firstname , String lastname){
     while(true){
         if (storedUsername.matches(username)&&storedPassword.matches(password)){
             System.out.println("Welcome "+firstname+" "+ lastname+" It is great to see you again!");
@@ -71,5 +79,6 @@ void loginUser(String storedUsername ,String storedPassword ,String username , S
             storedPassword = sc.nextLine();
         }
     }
+    return storedUsername;
 }
 }
